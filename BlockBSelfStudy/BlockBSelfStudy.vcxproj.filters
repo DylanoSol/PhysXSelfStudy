@@ -19,4 +19,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXCommon_64.dll" />
+    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXCooking_64.dll" />
+    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXDevice64.dll" />
+    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXFoundation_64.dll" />
+    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXGpu_64.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysX_64.dll" />
+  </ItemGroup>
 </Project>
