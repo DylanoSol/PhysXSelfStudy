@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\physics\Physics.cpp" />
     <ClCompile Include="src\core\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,9 @@
     <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysX_64.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\physics\Physics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

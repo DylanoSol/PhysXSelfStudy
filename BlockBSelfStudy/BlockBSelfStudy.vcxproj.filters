@@ -18,15 +18,21 @@
     <ClCompile Include="src\core\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXCommon_64.dll" />
-    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXCooking_64.dll" />
-    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXDevice64.dll" />
-    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXFoundation_64.dll" />
-    <None Include="thirdparty\binaries\PhysX\Ddll\PhysXGpu_64.dll" />
+    <ClCompile Include="src\physics\Physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysX_64.dll" />
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysXCommon_64.dll" />
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysXCooking_64.dll" />
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysXDevice64.dll" />
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysXFoundation_64.dll" />
+    <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysXGpu_64.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\physics\Physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
