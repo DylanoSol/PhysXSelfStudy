@@ -22,6 +22,14 @@ void Physics::InitializePhysics()
 	//Create definition of physics world. 
 	m_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *m_foundation, physx::PxTolerancesScale(), true, m_pvd);
 
+	//Create material
+	m_material = m_physics->createMaterial(0.2, 0.5, 0.8); 
+
+	physx::PxPlane* planeGeometry = new physx::PxPlane(0.f, 1.f, 0.f, 0.f);
+	physx::PxRigidStatic* testPlane = physx::PxCreatePlane(*m_physics, *planeGeometry, *m_material);
+
+	physx::PxRigidDynamic* testSphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(0.f, 100.f, 0.f), physx::PxSphereGeometry(10.f), *m_material, 1.f);
+
 	//Set rules of physics world. 
 	m_dispatcher = physx::PxDefaultCpuDispatcherCreate(4);
 	physx::PxSceneDesc sceneDescription(m_physics->getTolerancesScale());
@@ -31,6 +39,10 @@ void Physics::InitializePhysics()
 
 	//Create scene
 	m_physicsScene = m_physics->createScene(sceneDescription);
+
+	//Add actors to test things
+	m_physicsScene->addActor(*testPlane); 
+	m_physicsScene->addActor(*testSphere); 
 
 	//Set up PVD client
 	physx::PxPvdSceneClient* pvdClient = m_physicsScene->getScenePvdClient();

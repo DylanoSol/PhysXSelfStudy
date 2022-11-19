@@ -19,5 +19,7 @@ private:
 	//Foundation needs these
 	physx::PxDefaultErrorCallback* m_errorCallback = NULL;
 	physx::PxDefaultAllocator* m_allocator = NULL;
+
+	physx::PxMaterial* m_material = nullptr; 
 };
 
