@@ -21,5 +21,10 @@ private:
 	physx::PxDefaultAllocator* m_allocator = NULL;
 
 	physx::PxMaterial* m_material = nullptr; 
+
+	physx::PxRigidDynamic* m_testSphere = nullptr; 
+
+
+	float m_testCountdown = 10000.f; 
 };
 
