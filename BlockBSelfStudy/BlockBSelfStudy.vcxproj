@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\Application.cpp" />
     <ClCompile Include="src\physics\Physics.cpp" />
     <ClCompile Include="src\core\Main.cpp" />
   </ItemGroup>
@@ -173,6 +174,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Application.h" />
     <ClInclude Include="src\physics\Physics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

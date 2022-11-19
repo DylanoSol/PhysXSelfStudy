@@ -28,6 +28,7 @@ void Physics::InitializePhysics()
 	physx::PxPlane* planeGeometry = new physx::PxPlane(0.f, 1.f, 0.f, 0.f);
 	physx::PxRigidStatic* testPlane = physx::PxCreatePlane(*m_physics, *planeGeometry, *m_material);
 
+
 	m_testSphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(0.f, 1.f, 0.f), physx::PxSphereGeometry(10.f), *m_material, 0.001f);
 
 	//Set rules of physics world. 
