@@ -37,7 +37,7 @@ void CheckInput()
 int main(int argc, char* args[])
 {
 	printf("Hello World \n");
-	testPlayer = new Player(physx::PxVec3(0.f), physx::PxQuat(0.f), physx::PxVec3(1.f));
+	testPlayer = new Player(physx::PxVec3(0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
 
 	for (int i = 0; i < amountOfInputThreads; i++)
 	{

@@ -6,6 +6,7 @@ class Physics
 public:
 	Physics(); 
 	void UpdatePhysics(float deltaTime); 
+	void AddToWorld(physx::PxActor* actor);
 
 private:
 	void InitializePhysics(); 

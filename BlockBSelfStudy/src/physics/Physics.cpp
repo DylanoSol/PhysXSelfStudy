@@ -42,8 +42,8 @@ void Physics::InitializePhysics()
 	m_physicsScene = m_physics->createScene(sceneDescription);
 
 	//Add actors to test things
-	m_physicsScene->addActor(*testPlane); 
-	m_physicsScene->addActor(*m_testSphere); 
+	AddToWorld(testPlane);
+	AddToWorld(m_testSphere);
 
 	//Set up PVD client
 	physx::PxPvdSceneClient* pvdClient = m_physicsScene->getScenePvdClient();
@@ -68,4 +68,9 @@ void Physics::UpdatePhysics(float deltaTime)
 		m_testSphere->addForce(physx::PxVec3(1000.f, 0.f, 0.f));
 
 	}
+}
+
+void Physics::AddToWorld(physx::PxActor* actor)
+{
+	m_physicsScene->addActor(*actor); 
 }
