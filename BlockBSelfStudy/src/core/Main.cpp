@@ -5,6 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <vector>
+#include "../Entities/Player.h"
 #include "../physics/Physics.h"
 
 int testVar = 0; 
@@ -17,6 +18,7 @@ const int amountOfInputThreads = 1;
 bool waiting = true;
 bool running = true;
 bool wantsToClose = false; 
+Player* testPlayer;
 
 void CheckInput()
 {
@@ -35,6 +37,7 @@ void CheckInput()
 int main(int argc, char* args[])
 {
 	printf("Hello World \n");
+	testPlayer = new Player(physx::PxVec3(0.f), physx::PxQuat(0.f), physx::PxVec3(1.f));
 
 	for (int i = 0; i < amountOfInputThreads; i++)
 	{
@@ -46,6 +49,8 @@ int main(int argc, char* args[])
 	{
 		//Update physics simulation
 		physics.UpdatePhysics(0.f); 
+
+		//testPlayer->Update(0.f);
 
 		if (GetAsyncKeyState(VK_SPACE) || testVar == 100)
 		{
