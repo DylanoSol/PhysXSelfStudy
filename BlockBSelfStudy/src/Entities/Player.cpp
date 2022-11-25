@@ -24,12 +24,23 @@ void Player::SetSwing(const physx::PxVec3& vec)
 
 void Player::Update(float deltaTime)
 {
+	m_sleeping = m_sphere->isSleeping();
+
 	if (m_ready) Swing(); 
+
+	m_lockCountdown--; 
+	if (m_lockCountdown == 0) m_lock = false;
+	
 }
 
 void Player::Swing()
 {
 	//Apply force on the player object
 	m_sphere->addForce(m_swingVector);
+
+	AmountOfSwings++;
 	m_ready = false; 
+
+	//Set a countdown to unlock the next swing
+	m_lockCountdown = 50;
 }

@@ -24,16 +24,17 @@ void CheckInput()
 {
 	while (running)
 	{
-		waiting = false; 
+		printf("Swing %d: \n", testPlayer->AmountOfSwings + 1);
+	
 		printf("Input X \n");
 		std::cin >> var1;	
 		printf("Input Y \n");
 		std::cin >> var2;
 		printf("Input Z \n");
 		std::cin >> var3;
-		waiting = true; 
-
+		
 		testPlayer->SetSwing(physx::PxVec3(var1, var2, var3));
+		testPlayer->m_lock = true; 
 
 		//Waits before the main loop finishes, in order to make closing the program easier. 
 		std::unique_lock<std::mutex> lock(inputMutex); 
@@ -75,7 +76,7 @@ int main(int argc, char* args[])
 		}
 
 		//Notifies the input thread. 
-		if (waiting) condition.notify_all(); 
+		if (!testPlayer->m_lock && testPlayer->m_sleeping) condition.notify_all(); 
 	}
 }
 

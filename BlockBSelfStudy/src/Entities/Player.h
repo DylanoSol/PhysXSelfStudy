@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 
+enum class PlayerStates { Waiting, Moving };
 class Physics; 
 class Player :
     public Entity
@@ -10,10 +11,19 @@ public:
     void Update(float deltaTime) override; 
     void SetSwing(const physx::PxVec3& vec);
 
-
+    int AmountOfSwings = 0; 
+    
     bool m_ready = false; 
 
+    bool m_lock = false; 
+
+    bool m_sleeping = false; 
+
+    PlayerStates m_playerState = PlayerStates::Waiting; 
+
 private: 
+    int m_lockCountdown = -1;
+
     void Swing();
 
     Physics* m_physicsHandler = nullptr; 
