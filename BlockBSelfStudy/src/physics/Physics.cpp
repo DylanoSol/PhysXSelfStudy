@@ -28,9 +28,6 @@ void Physics::InitializePhysics()
 	physx::PxPlane* planeGeometry = new physx::PxPlane(0.f, 1.f, 0.f, 0.f);
 	physx::PxRigidStatic* testPlane = physx::PxCreatePlane(*m_physics, *planeGeometry, *m_material);
 
-
-	m_testSphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(0.f, 1.f, 0.f), physx::PxSphereGeometry(10.f), *m_material, 0.001f);
-
 	//Set rules of physics world. 
 	m_dispatcher = physx::PxDefaultCpuDispatcherCreate(4);
 	physx::PxSceneDesc sceneDescription(m_physics->getTolerancesScale());
@@ -43,7 +40,6 @@ void Physics::InitializePhysics()
 
 	//Add actors to test things
 	AddToWorld(testPlane);
-	AddToWorld(m_testSphere);
 
 	//Set up PVD client
 	physx::PxPvdSceneClient* pvdClient = m_physicsScene->getScenePvdClient();
@@ -60,17 +56,14 @@ void Physics::UpdatePhysics(float deltaTime)
 	//replace with deltaTime
 	m_physicsScene->simulate(1.f / 60.f);
 	m_physicsScene->fetchResults(true);
-
-	m_testCountdown -= 1.f; 
-	if (m_testCountdown < 0)
-	{
-		m_testCountdown += 1000000.f;
-		m_testSphere->addForce(physx::PxVec3(1000.f, 0.f, 0.f));
-
-	}
 }
 
 void Physics::AddToWorld(physx::PxActor* actor)
 {
 	m_physicsScene->addActor(*actor); 
+}
+
+physx::PxPhysics* Physics::GetPhysics()
+{
+	return m_physics; 
 }

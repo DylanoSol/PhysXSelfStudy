@@ -6,7 +6,12 @@ class Physics
 public:
 	Physics(); 
 	void UpdatePhysics(float deltaTime); 
+
+	//Add physics actor to the world.
 	void AddToWorld(physx::PxActor* actor);
+
+	//An entity needs this to be able to add a physics object. 
+	physx::PxPhysics* GetPhysics(); 
 
 private:
 	void InitializePhysics(); 
@@ -24,8 +29,5 @@ private:
 	physx::PxMaterial* m_material = nullptr; 
 
 	physx::PxRigidDynamic* m_testSphere = nullptr; 
-
-
-	float m_testCountdown = 10000.f; 
 };
 

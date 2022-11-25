@@ -8,7 +8,7 @@
 #include "../Entities/Player.h"
 #include "../physics/Physics.h"
 
-int testVar = 0; 
+float var1, var2, var3; 
 
 Physics physics = Physics(); 
 std::condition_variable condition;
@@ -25,8 +25,15 @@ void CheckInput()
 	while (running)
 	{
 		waiting = false; 
-		std::cin >> testVar;	
+		printf("Input X \n");
+		std::cin >> var1;	
+		printf("Input Y \n");
+		std::cin >> var2;
+		printf("Input Z \n");
+		std::cin >> var3;
 		waiting = true; 
+
+		testPlayer->SetSwing(physx::PxVec3(var1, var2, var3));
 
 		//Waits before the main loop finishes, in order to make closing the program easier. 
 		std::unique_lock<std::mutex> lock(inputMutex); 
@@ -49,10 +56,9 @@ int main(int argc, char* args[])
 	{
 		//Update physics simulation
 		physics.UpdatePhysics(0.f); 
+		testPlayer->Update(0.f); 
 
-		//testPlayer->Update(0.f);
-
-		if (GetAsyncKeyState(VK_SPACE) || testVar == 100)
+		if (GetAsyncKeyState(VK_SPACE))
 		{
 			//close the program
 			running = false;
