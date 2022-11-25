@@ -13,9 +13,10 @@ Physics physics = Physics();
 std::condition_variable condition;
 std::vector<std::thread> workers; 
 std::mutex inputMutex; 
-const int amountOfThreads = 1; 
+const int amountOfInputThreads = 1; 
 bool waiting = true;
 bool running = true;
+bool wantsToClose = false; 
 
 void CheckInput()
 {
@@ -25,6 +26,7 @@ void CheckInput()
 		std::cin >> testVar;	
 		waiting = true; 
 
+		//Waits before the main loop finishes, in order to make closing the program easier. 
 		std::unique_lock<std::mutex> lock(inputMutex); 
 		condition.wait(lock); 
 	}
@@ -34,8 +36,9 @@ int main(int argc, char* args[])
 {
 	printf("Hello World \n");
 
-	for (int i = 0; i < amountOfThreads; i++)
+	for (int i = 0; i < amountOfInputThreads; i++)
 	{
+		//Launch the input thread
 		workers.emplace_back(std::thread([i] {CheckInput(); }));
 	}
 
@@ -48,8 +51,10 @@ int main(int argc, char* args[])
 		{
 			//close the program
 			running = false;
+
 			condition.notify_all(); 
-			for (int i = 0; i < amountOfThreads; i++)
+
+			for (int i = 0; i < amountOfInputThreads; i++)
 			{
 				//Kill threads
 				workers[i].join();
@@ -57,6 +62,8 @@ int main(int argc, char* args[])
 
 			exit(0);
 		}
+
+		//Notifies the input thread. 
 		if (waiting) condition.notify_all(); 
 	}
 }
