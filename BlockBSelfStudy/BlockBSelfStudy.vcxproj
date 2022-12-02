@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\resources\ModelData.cpp" />
     <ClCompile Include="src\resources\GLTFLoader.cpp" />
     <ClCompile Include="src\Entities\Course.cpp" />
     <ClCompile Include="src\Entities\Player.cpp" />
