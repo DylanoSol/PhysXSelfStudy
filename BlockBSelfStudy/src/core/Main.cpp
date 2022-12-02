@@ -36,7 +36,7 @@ void CheckInput()
 		testPlayer->SetSwing(physx::PxVec3(var1, var2, var3));
 		testPlayer->m_lock = true; 
 
-		//Waits before the main loop finishes, in order to make closing the program easier. 
+		//Lock the thread until the swing has been completed.
 		std::unique_lock<std::mutex> lock(inputMutex); 
 		condition.wait(lock); 
 	}

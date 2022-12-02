@@ -33,6 +33,9 @@
     <ClCompile Include="src\core\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Course.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysX_64.dll" />
@@ -56,6 +59,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
