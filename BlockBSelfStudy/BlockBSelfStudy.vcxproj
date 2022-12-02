@@ -149,6 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\resources\ModelData.cpp" />
+    <ClCompile Include="src\resources\GLTFLoader.cpp" />
     <ClCompile Include="src\Entities\Course.cpp" />
     <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
@@ -178,6 +180,8 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\resources\ModelData.h" />
+    <ClInclude Include="src\resources\GLTFLoader.h" />
     <ClInclude Include="src\Entities\Course.h" />
     <ClInclude Include="src\Entities\Player.h" />
     <ClInclude Include="src\Entities\Entity.h" />
