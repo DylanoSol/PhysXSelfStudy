@@ -20,9 +20,9 @@
 	{
 		uint32_t m_meshDataIdx;
 
-		physx::PxVec3 m_position{};
-		physx::PxQuat m_rotation{};
-		physx::PxVec3 m_scale{ 1, 1, 1 };
+		glm::vec3 m_position{};
+		glm::quat m_rotation{};
+		glm::vec3 m_scale{ 1, 1, 1 };
 
 		std::string m_diffuseTexture;
 	};
@@ -32,9 +32,9 @@
 		std::string m_meshName = "unnamed";
 		std::string uuid = "";
 
-		std::vector<physx::PxVec3> m_positions;
-		std::vector<physx::PxVec3> m_normals;
-		std::vector<physx::PxVec2> m_texCoords;
+		std::vector<glm::vec3> m_positions;
+		std::vector<glm::vec3> m_normals;
+		std::vector<glm::vec2> m_texCoords;
 
 		std::vector<uint32_t> m_indices;
 		tinygltf::Node node;
