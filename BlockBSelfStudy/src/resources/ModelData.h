@@ -4,6 +4,14 @@
 #include <cstdint>
 
 #include <tiny_gltf.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/integer.hpp>
+#include <glm/gtx/compatibility.hpp>
+#include <glm/gtx/euler_angles.hpp>
 #include <PhysX/PxPhysicsAPI.h>
 
 //Implementation derived from the OcEngine. 
