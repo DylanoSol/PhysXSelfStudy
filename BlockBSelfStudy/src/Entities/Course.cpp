@@ -88,6 +88,6 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 
 	physx::PxShape* shape = m_physics->createShape(physx::PxTriangleMeshGeometry(m_mesh), *m_material);
 
-	m_course = physx::PxCreateStatic(*m_physics, physx::PxTransform(5.f, 1.f, 0.f), *shape);
+	m_course = physx::PxCreateStatic(*m_physics, physx::PxTransform(5.f, 5.f, 0.f), *shape);
 	m_physicsHandler->AddToWorld(m_course); 
 }
