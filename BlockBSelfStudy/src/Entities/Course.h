@@ -9,6 +9,7 @@ class Course :
 public: 
     Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale), Physics* physics);
 
+
 private: 
     ModelData* m_courseData = nullptr; 
 
