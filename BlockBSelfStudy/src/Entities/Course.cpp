@@ -44,13 +44,13 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	physx::PxDefaultMemoryOutputStream outBuffer; 
 	physx::PxTriangleMeshCookingResult::Enum result; 
 	bool status = m_cooking->cookTriangleMesh(meshDescription, outBuffer, &result);
-	if (!status) printf("shit \n");
+	if (!status) printf("doesn't work innit \n");
 
 	physx::PxDefaultMemoryInputData stream(outBuffer.getData(), outBuffer.getSize()); 
 	m_mesh = m_physics->createTriangleMesh(stream); 
 
 	physx::PxShape* shape = m_physics->createShape(physx::PxTriangleMeshGeometry(m_mesh), *m_material);
 
-	m_course = physx::PxCreateStatic(*m_physics, physx::PxTransform(5.f, 5.f, 0.f), *shape);
+	m_course = physx::PxCreateStatic(*m_physics, physx::PxTransform(position), *shape);
 	m_physicsHandler->AddToWorld(m_course); 
 }

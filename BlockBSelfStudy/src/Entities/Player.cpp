@@ -11,7 +11,7 @@ Player::Player(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	m_material = m_physics->createMaterial(0.2, 0.5, 0.8);
 
 	//Create sphere physics object
-	m_sphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(0.f, 10.f, 0.f), physx::PxSphereGeometry(2.f), *m_material, 0.001f);
+	m_sphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(position), physx::PxSphereGeometry(2.f), *m_material, 0.001f);
 
 	m_physicsHandler->AddToWorld(m_sphere);
 }
