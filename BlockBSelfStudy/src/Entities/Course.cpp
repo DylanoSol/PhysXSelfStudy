@@ -5,7 +5,7 @@
 Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale), Physics* physics) : Entity(position, rotation, scale)
 {
 
-	m_courseData = LoadModelData("assets/testCourse.gltf");
+	m_courseData = LoadModelData("assets/testCourse2.gltf");
 
 	m_physicsHandler = physics;
 
@@ -19,30 +19,46 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 
 	//Generate triangle mesh
 
-	//Get the vertices
-	for (size_t i = 4; i < m_courseData->m_meshes.size(); i++)
+	std::vector<glm::vec3> test;
+
+	for (size_t i = 0; i < m_courseData->m_instances.size(); i++)
 	{
-		for (size_t j = 0; j < m_courseData->m_meshes[i - 4]->m_positions.size(); j++)
+		auto& instance = m_courseData->m_instances[i];
+		auto& meshData = m_courseData->m_meshes[instance->m_meshDataIdx];
+
+		for (size_t j = 0; j < meshData->m_indices.size(); j++)
 		{
-			m_vertices.push_back(m_courseData->m_meshes[i - 4]->m_positions[j]);
+			test.push_back(meshData->m_positions[meshData->m_indices[j]]);
 		}
 	}
 
-	//Get the indices 
-	for (size_t i = 4; i < m_courseData->m_meshes.size(); i++)
-	{
-		for (size_t j = 0; j < m_courseData->m_meshes[i - 4]->m_indices.size(); j++)
-		{
-			m_indices.push_back(m_courseData->m_meshes[i - 4]->m_indices[j]);
-		}
-	}
-
-	std::vector<glm::vec3> test; 
 	
-	for (size_t i = 0; i < m_indices.size(); i++)
-	{
-		test.push_back(m_vertices[m_indices[i]]);
-	}
+
+	//for (size_t i = 0; i < m_indices.size(); i++)
+	//{
+	//	test.push_back(m_vertices[m_indices[i]]);
+	//}
+
+	////Get the vertices
+	//for (size_t i = 0; i < m_courseData->m_meshes.size(); i++)
+	//{
+	//	for (size_t j = 0; j < m_courseData->m_meshes[i]->m_positions.size(); j++)
+	//	{
+	//		m_vertices.push_back(m_courseData->m_meshes[i]->m_positions[j]);
+	//	}
+	//}
+
+	//int idxOffset = 0;
+
+	////Get the indices 
+	//for (size_t i = 0; i < m_courseData->m_meshes.size(); i++)
+	//{
+	//	
+
+	//	idxOffset += m_courseData->m_meshes[i]->m_indices.size();
+	//}
+
+	
 
 	physx::PxTriangleMeshDesc meshDescription; 
 	meshDescription.points.count = test.size(); 
