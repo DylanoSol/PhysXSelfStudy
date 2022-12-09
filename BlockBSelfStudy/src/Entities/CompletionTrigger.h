@@ -12,5 +12,11 @@ private:
 
     physx::PxPhysics* m_physics = nullptr;
 
+    physx::PxShape* m_triggerShape = nullptr; 
+
+    physx::PxRigidStatic* m_trigger = nullptr; 
+
+    physx::PxMaterial* m_material = nullptr;
+
 };
 
