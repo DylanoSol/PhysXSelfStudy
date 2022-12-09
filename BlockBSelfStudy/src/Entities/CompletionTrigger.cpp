@@ -9,7 +9,3 @@ CompletionTrigger::CompletionTrigger(physx::PxVec3(position), physx::PxQuat(rota
 
 }
 
-void CompletionTrigger::Update(float deltaTime)
-{
-
-}
