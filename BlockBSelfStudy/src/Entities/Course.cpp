@@ -44,9 +44,21 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 
 	meshDescription.triangles.count = m_indices.size(); 
 	meshDescription.triangles.stride = sizeof(physx::PxU32); 
-	meshDescription.points.data = &m_indices[0]; 
+	meshDescription.triangles.data = &m_indices[0]; 
 	
+	assert(meshDescription.isValid());
 
-	
+	physx::PxCookingParams waltuh = m_cooking->getParams(); 
+
+	waltuh.midphaseDesc = physx::PxMeshMidPhase::eBVH33; 
+
+	physx::PxU32 meshSize = 0; 
+	physx::PxDefaultMemoryOutputStream outBuffer; 
+	physx::PxTriangleMeshCookingResult::Enum result; 
+	bool status = m_cooking->cookTriangleMesh(meshDescription, outBuffer, &result);
+	if (!status) printf("shit \n");
+
+	physx::PxDefaultMemoryInputData stream(outBuffer.getData(), outBuffer.getSize()); 
+	m_mesh = m_physics->createTriangleMesh(stream); 
 	
 }

@@ -6,6 +6,7 @@
 #include <condition_variable>
 #include <vector>
 #include "../Entities/Player.h"
+#include "../Entities/Course.h"
 #include "../physics/Physics.h"
 
 
@@ -20,6 +21,7 @@ bool waiting = true;
 bool running = true;
 bool wantsToClose = false; 
 Player* testPlayer;
+Course* testCourse; 
 
 void CheckInput()
 {
@@ -47,9 +49,7 @@ int main(int argc, char* args[])
 {
 	printf("Hello World \n");
 	testPlayer = new Player(physx::PxVec3(0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
-
-
-	
+	testCourse = new Course(physx::PxVec3(0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
 
 	for (int i = 0; i < amountOfInputThreads; i++)
 	{

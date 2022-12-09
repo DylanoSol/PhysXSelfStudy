@@ -22,7 +22,9 @@ private:
 
     physx::PxTriangleMesh* m_mesh = nullptr; 
 
+    physx::PxRigidDynamic* m_course = nullptr; 
+
     std::vector<glm::vec3> m_vertices;
-    std::vector<float> m_indices; 
+    std::vector<int> m_indices; 
 };
 
