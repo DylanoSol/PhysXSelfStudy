@@ -22,6 +22,9 @@ void Physics::InitializePhysics()
 	//Create definition of physics world. 
 	m_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *m_foundation, physx::PxTolerancesScale(), true, m_pvd);
 
+	//Create cooking
+	m_cooking = PxCreateCooking(PX_PHYSICS_VERSION, *m_foundation, physx::PxCookingParams(physx::PxTolerancesScale())); 
+
 	//Create material
 	m_material = m_physics->createMaterial(0.2, 0.5, 0.8); 
 
@@ -66,4 +69,9 @@ void Physics::AddToWorld(physx::PxActor* actor)
 physx::PxPhysics* Physics::GetPhysics()
 {
 	return m_physics; 
+}
+
+physx::PxCooking* Physics::GetCooking()
+{
+	return m_cooking;
 }

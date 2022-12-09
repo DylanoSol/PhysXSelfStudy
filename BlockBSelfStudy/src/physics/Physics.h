@@ -13,6 +13,9 @@ public:
 	//An entity needs this to be able to add a physics object. 
 	physx::PxPhysics* GetPhysics(); 
 
+	//The meshes use this
+	physx::PxCooking* GetCooking(); 
+
 private:
 	void InitializePhysics(); 
 
@@ -21,6 +24,8 @@ private:
 	physx::PxFoundation* m_foundation = NULL;
 	physx::PxPvd* m_pvd = NULL;
 	physx::PxDefaultCpuDispatcher* m_dispatcher = NULL;
+
+	physx::PxCooking* m_cooking = nullptr; 
 
 	//Foundation needs these
 	physx::PxDefaultErrorCallback* m_errorCallback = NULL;
