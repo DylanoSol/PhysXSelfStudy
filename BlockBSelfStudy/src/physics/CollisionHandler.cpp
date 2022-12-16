@@ -11,6 +11,7 @@ void CollisionHandler::onTrigger(physx::PxTriggerPair* pairs, physx::PxU32 count
 		if ((pairs[i].otherActor->getName() == "PlayerSphere") && (pairs[i].triggerActor->getName() == "CompletionTrigger"))
 		{
 			printf("Level complete \n");
+			
 		}
 	}
 }
