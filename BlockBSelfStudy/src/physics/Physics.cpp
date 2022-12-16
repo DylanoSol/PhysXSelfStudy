@@ -55,6 +55,9 @@ void Physics::InitializePhysics()
 	}
 
 	m_collisionHandler = new CollisionHandler(); 
+
+	//Set collision response handler
+	m_physicsScene->setSimulationEventCallback(m_collisionHandler);
 }
 
 void Physics::UpdatePhysics(float deltaTime)
