@@ -16,6 +16,9 @@ CompletionTrigger::CompletionTrigger(physx::PxVec3(position), physx::PxQuat(rota
 	m_triggerShape->setFlag(physx::PxShapeFlag::eTRIGGER_SHAPE, true);
 
 	m_trigger = physx::PxCreateStatic(*m_physics, physx::PxTransform(position), *m_triggerShape); 
+
+	m_trigger->setName("CompletionTrigger");
+
 	m_physicsHandler->AddToWorld(m_trigger);
 
 }

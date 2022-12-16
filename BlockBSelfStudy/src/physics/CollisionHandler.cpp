@@ -4,7 +4,14 @@ void CollisionHandler::onTrigger(physx::PxTriggerPair* pairs, physx::PxU32 count
 {
 	for (physx::PxU32 i = 0; i < count; i++)
 	{
-		printf("response %d \n", i);
+		// ignore pairs when shapes have been deleted
+		if (pairs[i].flags & (physx::PxTriggerPairFlag::eREMOVED_SHAPE_TRIGGER | physx::PxTriggerPairFlag::eREMOVED_SHAPE_OTHER))
+			continue;
+
+		if ((pairs[i].otherActor->getName() == "PlayerSphere") && (pairs[i].triggerActor->getName() == "CompletionTrigger"))
+		{
+			printf("Level complete \n");
+		}
 	}
 }
 

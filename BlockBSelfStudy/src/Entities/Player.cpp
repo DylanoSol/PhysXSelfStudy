@@ -13,6 +13,8 @@ Player::Player(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	//Create sphere physics object
 	m_sphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(position), physx::PxSphereGeometry(2.f), *m_material, 0.001f);
 
+	m_sphere->setName("PlayerSphere");
+
 	m_physicsHandler->AddToWorld(m_sphere);
 }
 
