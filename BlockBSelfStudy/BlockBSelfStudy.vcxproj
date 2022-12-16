@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\physics\CollisionHandler.cpp" />
     <ClCompile Include="src\Entities\CompletionTrigger.cpp" />
     <ClCompile Include="src\resources\GLTFLoader.cpp" />
     <ClCompile Include="src\Entities\Course.cpp" />
@@ -182,6 +183,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\physics\CollisionHandler.h" />
     <ClInclude Include="src\Entities\CompletionTrigger.h" />
     <ClInclude Include="src\resources\ModelData.h" />
     <ClInclude Include="src\resources\GLTFLoader.h" />

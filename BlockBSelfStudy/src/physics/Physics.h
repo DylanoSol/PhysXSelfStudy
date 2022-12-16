@@ -1,6 +1,7 @@
 #pragma once
 #include <PhysX/PxPhysicsAPI.h>
 
+class CollisionHandler;
 class Physics
 {
 public:
@@ -34,5 +35,7 @@ private:
 	physx::PxMaterial* m_material = nullptr; 
 
 	physx::PxRigidDynamic* m_testSphere = nullptr; 
+
+	CollisionHandler* m_collisionHandler = nullptr; 
 };
 

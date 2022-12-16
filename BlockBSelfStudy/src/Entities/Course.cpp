@@ -29,6 +29,7 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 		}
 	}
 	
+	//Send vertex data to PhysX
 	physx::PxTriangleMeshDesc meshDescription; 
 	meshDescription.points.count = m_vertices.size(); 
 	meshDescription.points.stride = sizeof(physx::PxVec3); 
@@ -36,6 +37,7 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	
 	assert(meshDescription.isValid());
 
+	//Cook mesh
 	physx::PxCookingParams waltuh = m_cooking->getParams(); 
 
 	waltuh.midphaseDesc = physx::PxMeshMidPhase::eBVH33; 
@@ -49,6 +51,7 @@ Course::Course(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	physx::PxDefaultMemoryInputData stream(outBuffer.getData(), outBuffer.getSize()); 
 	m_mesh = m_physics->createTriangleMesh(stream); 
 
+	//Add to world
 	physx::PxShape* shape = m_physics->createShape(physx::PxTriangleMeshGeometry(m_mesh), *m_material);
 
 	m_course = physx::PxCreateStatic(*m_physics, physx::PxTransform(position), *shape);

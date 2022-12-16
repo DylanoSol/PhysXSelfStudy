@@ -1,4 +1,5 @@
 #include "Physics.h"
+#include "CollisionHandler.h"
 
 Physics::Physics()
 {
@@ -7,7 +8,7 @@ Physics::Physics()
 
 void Physics::InitializePhysics()
 {
-
+	
 	m_allocator = new physx::PxDefaultAllocator();
 	m_errorCallback = new physx::PxDefaultErrorCallback();
 
@@ -52,6 +53,8 @@ void Physics::InitializePhysics()
 		pvdClient->setScenePvdFlag(physx::PxPvdSceneFlag::eTRANSMIT_CONTACTS, true);
 		pvdClient->setScenePvdFlag(physx::PxPvdSceneFlag::eTRANSMIT_SCENEQUERIES, true);
 	}
+
+	m_collisionHandler = new CollisionHandler(); 
 }
 
 void Physics::UpdatePhysics(float deltaTime)
