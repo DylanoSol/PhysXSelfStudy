@@ -5,6 +5,26 @@ Physics::Physics()
 {
 	InitializePhysics(); 
 }
+using namespace::physx;
+
+PxFilterFlags PhysicsFilterShader(
+	PxFilterObjectAttributes attributes0, PxFilterData filterData0,
+	PxFilterObjectAttributes attributes1, PxFilterData filterData1,
+	PxPairFlags& pairFlags, const void* constantBlock, PxU32 constantBlockSize)
+{
+	// let triggers through
+	if (PxFilterObjectIsTrigger(attributes0) || PxFilterObjectIsTrigger(attributes1))
+	{
+		pairFlags = PxPairFlag::eTRIGGER_DEFAULT;
+		return PxFilterFlag::eDEFAULT;
+	}
+	// generate contacts for all that were not filtered above
+	pairFlags = PxPairFlag::eCONTACT_DEFAULT;
+
+	pairFlags |= PxPairFlag::eNOTIFY_TOUCH_FOUND;
+
+	return PxFilterFlag::eDEFAULT;
+}
 
 void Physics::InitializePhysics()
 {
@@ -37,7 +57,8 @@ void Physics::InitializePhysics()
 	physx::PxSceneDesc sceneDescription(m_physics->getTolerancesScale());
 	sceneDescription.gravity = physx::PxVec3(0.f, -9.81f, 0.f);
 	sceneDescription.cpuDispatcher = m_dispatcher;
-	sceneDescription.filterShader = physx::PxDefaultSimulationFilterShader;
+	sceneDescription.filterShader = PhysicsFilterShader;
+
 
 	//Create scene
 	m_physicsScene = m_physics->createScene(sceneDescription);
@@ -58,6 +79,10 @@ void Physics::InitializePhysics()
 
 	//Set collision response handler
 	m_physicsScene->setSimulationEventCallback(m_collisionHandler);
+	
+	//Enable collision between static and dynamic objects
+
+	
 }
 
 void Physics::UpdatePhysics(float deltaTime)

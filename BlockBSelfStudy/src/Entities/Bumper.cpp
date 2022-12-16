@@ -52,8 +52,10 @@ Bumper::Bumper(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 
 	//Add to world
 	physx::PxShape* shape = m_physics->createShape(physx::PxTriangleMeshGeometry(m_mesh, m_scale), *m_material);
-
+	
 	m_cylinder = physx::PxCreateStatic(*m_physics, physx::PxTransform(position), *shape);
+	m_cylinder->setName("Bumper");
+	
 	m_physicsHandler->AddToWorld(m_cylinder);
 }
 
