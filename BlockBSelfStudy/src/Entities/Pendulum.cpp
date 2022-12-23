@@ -20,16 +20,17 @@ Pendulum::Pendulum(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVe
 	
 	//Configure joint
 	m_joint = physx::PxRevoluteJointCreate(*m_physics, m_origin, physx::PxTransform(0.f, -50.f, 0.f), m_hangingObject, physx::PxTransform(0.f, 50.f, 0.f));
-	m_joint->setLimit(physx::PxJointAngularLimitPair(physx::PxPi * -0.25f, physx::PxPi * 0.25f));
+	//m_joint->setLimit(physx::PxJointAngularLimitPair(physx::PxPi * -0.25f, physx::PxPi * 0.25f));
 	m_joint->setRevoluteJointFlag(physx::PxRevoluteJointFlag::eLIMIT_ENABLED, false);
 
 	m_joint->setConstraintFlag(physx::PxConstraintFlag::eVISUALIZATION, true);
 
-	m_joint->setDriveVelocity(0.4f);
+	m_joint->setDriveVelocity(0.3f);
 	m_joint->setRevoluteJointFlag(physx::PxRevoluteJointFlag::eDRIVE_ENABLED, true);
 
+	m_origin->setGlobalPose(physx::PxTransform(physx::PxVec3(position.x, position.y + 100.f, position.z), physx::PxQuat(0.5f * physx::PxPi, physx::PxVec3(0.f, 1.f, 0.f))));
 	m_physicsHandler->AddToWorld(m_hangingObject); 
-	m_physicsHandler->AddToWorld(m_origin); 
+	m_physicsHandler->AddToWorld(m_origin);
 }
 
 void Pendulum::Update(float deltaTime)
