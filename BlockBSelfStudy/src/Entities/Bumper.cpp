@@ -55,6 +55,7 @@ Bumper::Bumper(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	
 	m_cylinder = physx::PxCreateStatic(*m_physics, physx::PxTransform(position), *shape);
 	m_cylinder->setName("Bumper");
+	m_cylinder->userData = this;
 	
 	m_physicsHandler->AddToWorld(m_cylinder);
 }

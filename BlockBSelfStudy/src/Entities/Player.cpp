@@ -14,6 +14,7 @@ Player::Player(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(s
 	m_sphere = physx::PxCreateDynamic(*m_physics, physx::PxTransform(position), physx::PxSphereGeometry(2.f), *m_material, 0.001f);
 
 	m_sphere->setName("PlayerSphere");
+	m_sphere->userData = this;
 
 	m_physicsHandler->AddToWorld(m_sphere);
 }
@@ -32,6 +33,12 @@ void Player::Update(float deltaTime)
 
 	m_lockCountdown--; 
 	if (m_lockCountdown == 0) m_lock = false;
+
+	if (m_environmentalForceVector.magnitudeSquared() > 0.1f)
+	{
+		Launch(m_environmentalForceVector);
+		m_environmentalForceVector = physx::PxVec3(0.f);
+	}
 	
 }
 
@@ -45,4 +52,14 @@ void Player::Swing()
 
 	//Set a countdown to unlock the next swing
 	m_lockCountdown = 50;
+}
+
+void Player::Launch(const physx::PxVec3& vec)
+{
+	m_sphere->addForce(vec);
+}
+
+void Player::AddEnvironmentalForce(const physx::PxVec3& vec)
+{
+	m_environmentalForceVector = m_environmentalForceVector + vec;
 }

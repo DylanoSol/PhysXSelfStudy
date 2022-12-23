@@ -7,6 +7,7 @@ Physics::Physics()
 }
 using namespace::physx;
 
+//Code derived from https://github.com/NVIDIAGameWorks/PhysX-3.4/blob/master/PhysX_3.4/Samples/SampleSubmarine/SampleSubmarine.cpp
 PxFilterFlags PhysicsFilterShader(
 	PxFilterObjectAttributes attributes0, PxFilterData filterData0,
 	PxFilterObjectAttributes attributes1, PxFilterData filterData1,
