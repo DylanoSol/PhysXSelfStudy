@@ -9,6 +9,7 @@
 #include "../Entities/Course.h"
 #include "../Entities/CompletionTrigger.h"
 #include "../Entities/Bumper.h"
+#include "../Entities/Pendulum.h"
 #include "../physics/Physics.h"
 
 
@@ -26,7 +27,7 @@ Player* testPlayer;
 Course* testCourse; 
 CompletionTrigger* testCompletionTrigger; 
 Bumper* testBumper;
-
+Pendulum* testPendulum; 
 
 void CheckInput()
 {
@@ -57,6 +58,7 @@ int main(int argc, char* args[])
 	testCourse = new Course(physx::PxVec3(5.f, 5.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
 	testBumper = new Bumper(physx::PxVec3(0.f, 10.f, 55.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 	testCompletionTrigger = new CompletionTrigger(physx::PxVec3(0.f, 0.f, 115.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
+	testPendulum = new Pendulum(physx::PxVec3(0.f, 20.f, 80.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 
 
 	for (int i = 0; i < amountOfInputThreads; i++)
@@ -70,6 +72,7 @@ int main(int argc, char* args[])
 		//Update physics simulation
 		physics.UpdatePhysics(0.f); 
 		testPlayer->Update(0.f); 
+		testPendulum->Update(0.f); 
 
 		if (GetAsyncKeyState(VK_SPACE))
 		{

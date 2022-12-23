@@ -17,13 +17,13 @@ public:
 	//The meshes use this
 	physx::PxCooking* GetCooking(); 
 
+	physx::PxPvd* m_pvd = NULL;
 private:
 	void InitializePhysics(); 
 
 	physx::PxScene* m_physicsScene = NULL;
 	physx::PxPhysics* m_physics = NULL;
 	physx::PxFoundation* m_foundation = NULL;
-	physx::PxPvd* m_pvd = NULL;
 	physx::PxDefaultCpuDispatcher* m_dispatcher = NULL;
 
 	physx::PxCooking* m_cooking = nullptr; 

@@ -41,6 +41,7 @@ void Physics::InitializePhysics()
 	physx::PxPvdTransport* transport = physx::PxDefaultPvdSocketTransportCreate("127.0.0.1", 5425, 10);
 	m_pvd->connect(*transport, physx::PxPvdInstrumentationFlag::eALL);
 
+	
 	//Create definition of physics world. 
 	m_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *m_foundation, physx::PxTolerancesScale(), true, m_pvd);
 
@@ -64,6 +65,9 @@ void Physics::InitializePhysics()
 	//Create scene
 	m_physicsScene = m_physics->createScene(sceneDescription);
 
+	m_physicsScene->setVisualizationParameter(physx::PxVisualizationParameter::eJOINT_LOCAL_FRAMES, 1.0f);
+	m_physicsScene->setVisualizationParameter(PxVisualizationParameter::eJOINT_LIMITS, 1.0f);
+
 	//Add actors to test things
 	AddToWorld(testPlane);
 
@@ -75,6 +79,7 @@ void Physics::InitializePhysics()
 		pvdClient->setScenePvdFlag(physx::PxPvdSceneFlag::eTRANSMIT_CONTACTS, true);
 		pvdClient->setScenePvdFlag(physx::PxPvdSceneFlag::eTRANSMIT_SCENEQUERIES, true);
 	}
+
 
 	m_collisionHandler = new CollisionHandler(); 
 

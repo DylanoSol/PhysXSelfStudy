@@ -6,6 +6,7 @@ class Pendulum :
 {
 public:
     Pendulum(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale), Physics* physics);
+    void Update(float deltaTime) override; 
 
 private:
     Physics* m_physicsHandler = nullptr;
@@ -17,5 +18,7 @@ private:
 
     physx::PxMaterial* m_material = nullptr;
 
+    //Joint
+    physx::PxRevoluteJoint* m_joint = nullptr; 
 };
 
