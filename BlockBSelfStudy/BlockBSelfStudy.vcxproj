@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\Pendulum.cpp" />
     <ClCompile Include="src\Entities\Bumper.cpp" />
     <ClCompile Include="src\physics\CollisionHandler.cpp" />
     <ClCompile Include="src\Entities\CompletionTrigger.cpp" />
@@ -184,6 +185,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Entities\Pendulum.h" />
     <ClInclude Include="src\Entities\Bumper.h" />
     <ClInclude Include="src\physics\CollisionHandler.h" />
     <ClInclude Include="src\Entities\CompletionTrigger.h" />
