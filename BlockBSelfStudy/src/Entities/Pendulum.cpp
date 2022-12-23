@@ -16,14 +16,17 @@ Pendulum::Pendulum(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVe
 	m_origin = physx::PxCreateStatic(*m_physics, physx::PxTransform(position.x, position.y + 100.f, position.z), physx::PxBoxGeometry(scale.x, scale.y, scale.z), *m_material);
 
 	//Create thing that will rotate around origin
-	m_hangingObject = physx::PxCreateDynamic(*m_physics, physx::PxTransform(position), physx::PxBoxGeometry(scale), *m_material, 0.5f);
+	m_hangingObject = physx::PxCreateDynamic(*m_physics, physx::PxTransform(position), physx::PxBoxGeometry(scale), *m_material, 100.f);
 	
 	//Configure joint
 	m_joint = physx::PxRevoluteJointCreate(*m_physics, m_origin, physx::PxTransform(0.f, -50.f, 0.f), m_hangingObject, physx::PxTransform(0.f, 50.f, 0.f));
-	m_joint->setLimit(physx::PxJointAngularLimitPair(physx::PxPi * -0.25f, physx::PxPi * 0.25f, 0.01f));
+	m_joint->setLimit(physx::PxJointAngularLimitPair(physx::PxPi * -0.25f, physx::PxPi * 0.25f));
 	m_joint->setRevoluteJointFlag(physx::PxRevoluteJointFlag::eLIMIT_ENABLED, false);
 
 	m_joint->setConstraintFlag(physx::PxConstraintFlag::eVISUALIZATION, true);
+
+	m_joint->setDriveVelocity(0.4f);
+	m_joint->setRevoluteJointFlag(physx::PxRevoluteJointFlag::eDRIVE_ENABLED, true);
 
 	m_physicsHandler->AddToWorld(m_hangingObject); 
 	m_physicsHandler->AddToWorld(m_origin); 
@@ -31,7 +34,7 @@ Pendulum::Pendulum(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVe
 
 void Pendulum::Update(float deltaTime)
 {
-	//m_hangingObject->addForce(physx::PxVec3(100.f, 0.f, 100.f)); 
+//	m_hangingObject->addForce(physx::PxVec3(0.f, 0.f, 0.f)); 
 }
 
 
