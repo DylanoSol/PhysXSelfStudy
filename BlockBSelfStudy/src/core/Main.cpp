@@ -56,12 +56,12 @@ void CheckInput()
 int main(int argc, char* args[])
 {
 	printf("Hello World \n");
-	testPlayer = new Player(physx::PxVec3(0.f, 10.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
+	testPlayer = new Player(physx::PxVec3(0.f, 100.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
 	testCourse = new Course(physx::PxVec3(5.f, 5.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(1.f), &physics);
 	testBumper = new Bumper(physx::PxVec3(0.f, 10.f, 55.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 	testCompletionTrigger = new CompletionTrigger(physx::PxVec3(0.f, 0.f, 115.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 	testPendulum = new Pendulum(physx::PxVec3(0.f, 12.f, 80.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
-	testRope = new Rope(physx::PxVec3(0.f, 200.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
+	testRope = new Rope(physx::PxVec3(-80.f, 30.f, 10.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
 
 
 	for (int i = 0; i < amountOfInputThreads; i++)
