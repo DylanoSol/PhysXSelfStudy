@@ -9,7 +9,7 @@ class Rope :
 public:
     Rope(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale), Physics* physics);
     void Update(float deltaTime) override;
-    void AddJoint(physx::PxRigidDynamic* bodyPart1, physx::PxRigidDynamic* bodyPart2, physx::PxSphericalJoint* joint);
+    void AddJoint(physx::PxRigidDynamic* bodyPart1, physx::PxRigidDynamic* bodyPart2);
 
 private:
     Physics* m_physicsHandler = nullptr;
@@ -19,6 +19,8 @@ private:
     physx::PxRigidStatic* m_origin = nullptr;
 
     physx::PxRigidDynamic* m_end = nullptr; 
+
+    physx::PxRigidStatic* m_connectionPoint2 = nullptr; 
 
     std::vector<physx::PxRigidDynamic*> m_body; 
 

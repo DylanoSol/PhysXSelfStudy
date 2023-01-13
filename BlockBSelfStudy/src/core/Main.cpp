@@ -61,7 +61,7 @@ int main(int argc, char* args[])
 	testBumper = new Bumper(physx::PxVec3(0.f, 10.f, 55.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 	testCompletionTrigger = new CompletionTrigger(physx::PxVec3(0.f, 0.f, 115.f), physx::PxQuat(0.f), physx::PxVec3(3.f), &physics);
 	testPendulum = new Pendulum(physx::PxVec3(0.f, 12.f, 80.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
-	testRope = new Rope(physx::PxVec3(0.f, 20.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
+	testRope = new Rope(physx::PxVec3(0.f, 200.f, 0.f), physx::PxQuat(0.f), physx::PxVec3(5.f), &physics);
 
 
 	for (int i = 0; i < amountOfInputThreads; i++)
