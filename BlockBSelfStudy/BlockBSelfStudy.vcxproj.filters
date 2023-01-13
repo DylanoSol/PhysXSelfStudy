@@ -51,6 +51,9 @@
     <ClCompile Include="src\Entities\Pendulum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Rope.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="thirdparty\binaries\PhysX\Ddll\PhysX_64.dll" />
@@ -95,6 +98,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Entities\Pendulum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Rope.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
