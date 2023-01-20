@@ -5,7 +5,7 @@ Rope::Rope(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale
 {
 
 	//Hardcoded now just to test whether this works. 
-	m_distance = new physx::PxVec3(15.f, 0.f, 0.f); 
+	m_distance = new physx::PxVec3(3.f, 0.f, 0.f); 
 
 	m_physicsHandler = physics;
 
@@ -54,6 +54,7 @@ Rope::Rope(physx::PxVec3(position), physx::PxQuat(rotation), physx::PxVec3(scale
 	for (int i = 0; i < m_amountOfBodyParts; i++)
 	{
 		m_physicsHandler->AddToWorld(m_body[i]);
+		m_body[i]->setActorFlag(physx::PxActorFlag::eVISUALIZATION, true); 
 	}
 	m_physicsHandler->AddToWorld(m_origin);
 }

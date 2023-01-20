@@ -26,7 +26,7 @@ private:
 
     std::vector<physx::PxSphericalJoint*> m_joints; 
 
-    const int m_amountOfBodyParts = 10; 
+    const int m_amountOfBodyParts = 100; 
 
     physx::PxMaterial* m_material = nullptr;
 
